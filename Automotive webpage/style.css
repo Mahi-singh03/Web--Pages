@@ -1,0 +1,113 @@
+/* body */
+body{
+  background-color: rgb(180, 225, 204);
+}
+
+
+
+
+
+/* NAVBAR  */
+.navbar-brand{
+  padding-right: 10px;
+}
+
+
+
+
+
+/* HOME JUMBOTRON  */
+#jumbotron{  
+    background-image: url('photos/pexels-pixabay-35967.jpg');  
+    background-size: cover;  
+    background-position: center;  
+    height: 500px;
+    margin-top: -40px ;
+}
+
+.display-3{
+  padding-top:25px ;
+  color: #000;
+  font-size: 50px;;
+}
+
+
+
+
+/*CARD MENU*/
+.card-columns{
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-bottom: 10px;
+}
+
+
+
+
+/* DESCRIPTION FLEX */
+
+.list-group{
+  text-align: justify;
+}
+
+#jumbotron1{  
+  background-image: url('photos/photo_6210790261164983066_y.jpg');  
+  background-size: cover;  
+  background-position: center;  
+  height: 400px;
+  padding: 200px;
+
+}
+
+#jumbotron2{  
+  background-image: url('photos/pexels-revac-film-s-photography-10400-229047\ \(1\).jpg');  
+  background-size: cover;  
+  background-position: center;  
+  height: 500px;
+
+}
+
+#jumbotron3{  
+  background-image: url('photos/damImage.narrow.1350w.j_1670940721705.jpg');  
+  background-size: cover;  
+  background-position: center;  
+  height: 500px;
+
+}
+
+
+#image{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
+
+
+
+
+
+
+
+
+
+/* FOOTER */
+
+footer{
+  height: 300px;
+  background-color: white;
+}
+h4{
+  text-align: center;
+  padding-top:20px;
+}
+.photos{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+h6{
+  text-align: center;
+}
+
+
