@@ -6,7 +6,9 @@ body {
 .navbar-brand {
     color: aliceblue;
 }
-
+.navbar-brand:hover{
+    color: aliceblue;
+}
 .navbar-brand-centered {
     margin: 0 auto;
 }
@@ -29,10 +31,15 @@ body {
     text-align: center;
 }
 
-.card-img-top {
+.img-fluid-constant {
     width: 100%;
     height: 175px; /* Set a constant height */
     object-fit: cover; /* Ensures the image covers the area */
+}
+
+.card-img-top {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    object-fit: cover; /* Ensures the image covers the area */
+    aspect-ratio: 5/4; /* Maintain aspect ratio */
 }
