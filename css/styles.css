@@ -7,6 +7,9 @@ body {
     color: aliceblue;
 }
 
+.navbar-brand-centered {
+    margin: 0 auto;
+}
 
 .main-heading {
     text-align: center;
