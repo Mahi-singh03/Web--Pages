@@ -1,0 +1,35 @@
+body {
+    background-color: blanchedalmond;
+    font-family: Arial, sans-serif;
+}
+
+.navbar-brand {
+    color: aliceblue;
+}
+
+
+.main-heading {
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 30px;
+    font-weight: bold;
+    color: #333;
+    padding-bottom: 30px;
+}
+
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    text-align: center;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 175px; /* Set a constant height */
+    object-fit: cover; /* Ensures the image covers the area */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
