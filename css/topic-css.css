@@ -44,4 +44,5 @@ body {
 }
 #imageS{
     text-align: center;
+    object-fit: contain;
 }
