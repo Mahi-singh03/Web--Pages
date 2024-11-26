@@ -1,48 +1,60 @@
 body {
-    background-color: blanchedalmond;
-    font-family: Arial, sans-serif;
+  background-color:  rgb(179, 233, 243);
+  font-family: Arial, sans-serif;
 }
 
 .navbar-brand {
-    color: aliceblue;
+  color: aliceblue;
 }
-.navbar-brand:hover{
-    color: aliceblue;
+.navbar-brand:hover {
+  color: aliceblue;
 }
 .navbar-brand-centered {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
 .main-heading {
-    text-align: center;
-    margin: 0 auto;
-    margin-top: 30px;
-    font-weight: bold;
-    color: #333;
-    padding-bottom: 30px;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 30px;
+  font-weight: bold;
+  color: #333;
+  padding-bottom: 30px;
 }
 
 .card {
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .card-body {
-    text-align: center;
+  text-align: center;
 }
 
 .img-fluid-constant {
-    width: 100%;
-    height: auto;
-    max-height: 175px; /* Set a max height */
-    object-fit: contain; /* Ensures the image is fully visible */
+  width: 100%;
+  height: auto;
+  max-height: 175px; /* Set a max height */
+  object-fit: contain; /* Ensures the image is fully visible */
 }
 
 .card-img-top {
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
-#imageS{
+#imageS {
+  text-align: center;
+  object-fit: contain;
+}
+
+.accordion-body img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0;
+}
+
+h3{
     text-align: center;
-    object-fit: contain;
+    padding: 20px;
 }

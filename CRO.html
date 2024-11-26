@@ -15,13 +15,15 @@
   <body>
     <nav class="navbar navbar-expand-sm navbar-light bg-dark">
       <div class="container">
-        <a class="navbar-brand navbar-brand-centered mx-6"
+        <a class="navbar-brand navbar-brand-centered mx-6" href="index.html"
           >IMPORTANT QUESTIONS</a
         >
       </div>
     </nav>
     <h3 class="main-heading">CRO and CRT</h3>
     <div class="container">
+
+      <h3>{ CRO jo hai oh CRT to mil ke baneya hunda }  </h3>
       
       <div class="accordion" id="accordionExample">
         
@@ -46,14 +48,9 @@
             data-bs-parent="#accordionExample"
           >
             <div class="accordion-body">
-              <strong>This is the first item's accordion body.</strong> It is
-              shown by default, until the collapse plugin adds the appropriate
-              classes that we use to style each element. These classes control
-              the overall appearance, as well as the showing and hiding via CSS
-              transitions. You can modify any of this with custom CSS or
-              overriding our default variables. It's also worth noting that just
-              about any HTML can go within the <code>.accordion-body</code>,
-              though the transition does limit overflow.
+              <strong>Definition of CRO:</strong> <br>A Cathode Ray Oscilloscope (CRO) is an electronic device used to display and analyze the shape of electrical signals. It helps in visualizing how voltage signals change over time.<br>
+              <hr>
+              <strong>Principle of CRO:</strong><br>A CRO works by directing an electron beam across a screen using electric fields. The beam's path is altered by the voltage of the input signal. When the beam hits the screen, it lights up, displaying the signal as a visual waveform.<br>
             </div>
           </div>
         </div>
@@ -100,5 +97,14 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <script>
+      document.querySelectorAll('.accordion-button').forEach(button => {
+          button.addEventListener('click', function () {
+              setTimeout(() => {
+                  document.documentElement.scrollTop = 0;
+              }, 300); // Adjust timeout to align with animation timing
+          });
+      });
+  </script>
   </body>
 </html>
