@@ -16,12 +16,29 @@
  
     <nav class="navbar navbar-expand-sm navbar-light bg-dark">
         <div class="container">
-          <a class="navbar-brand navbar-brand-centered mx-6" href="index.html"
-            >IMPORTANT QUESTIONS</a
-          >
+          <a class="navbar-brand navbar-brand-centered mx-6" href="index.html">IMPORTANT QUESTIONS</a>
         </div>
     </nav>
     <h3 class="main-heading">Rectifier</h3>
+    
+    <h4>Normaly sade houses vich Alternating Current (AC) anda switch board vicho, but jo normal used devices like Fridges, TV mobile phone Charger etc hunde oh Alternating Current (AC) te nhi but Direct Current (DC) te work karde, jekar ohna nu direct AC current de dita jaye oh kharab ho jande, is lai AC nu DC ch convert karan lai Rectifier lge hunde har devices ch like Fridges, TV mobile phone Charger etc.</h4>
+    <h4>Convert AC --> DC</h4>
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6 text-center">
+                <img src="images/types-of-rectifiers1.jpg" class="img-fluid" alt="Types of Rectifiers">
+            </div>
+        </div>
+    </div>
+    <br>
+   
+    <div class="container list">
+        <strong>1. Half-Wave Rectifiers :</strong> Suitable for devices that don't require a steady DC output, such as some small house hold Devices. <br>
+        <strong>2. Full-Wave Rectifiers :</strong> Commonly used in DC power supplies for electronic devices because itproviding a smooth and consistent power supply.<br>
+        <strong>3. Bridge Rectifiers Rectifiers :</strong> Preferred in industrial power supplies due to their high efficiency and ability to handle high current loads.<br>
+    </div>
+    <br>
 
     <div class="container">
 
@@ -59,11 +76,6 @@
           </div>
     </div>
 
-
-
-
-
-
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
@@ -71,10 +83,13 @@
     ></script>
     <script>
       document.querySelectorAll(".accordion-button").forEach((button) => {
-        button.addEventListener("click", function () {
-          setTimeout(() => {
-            document.documentElement.scrollTop = 0;
-          }, 300); // Adjust timeout to align with animation timing
+        button.addEventListener("click", function (e) {
+          let target = e.target.closest('.accordion-button');
+          if (target.classList.contains('collapsed')) { // Check if the accordion is being closed
+            setTimeout(() => {
+              document.documentElement.scrollTop = 0;
+            }, 300); // Adjust timeout to align with animation timing
+          }
         });
       });
     </script>
