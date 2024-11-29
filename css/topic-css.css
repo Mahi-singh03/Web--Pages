@@ -1,5 +1,5 @@
 body {
-  background-color:  rgb(179, 233, 243);
+  background-color:  rgb(208, 235, 227);
   font-family: Arial, sans-serif;
 }
 
@@ -56,11 +56,12 @@ body {
 }
 
 h4{
-    text-align: center;
+    text-align: justify;
     padding: 20px;
 }
 
 .list{
+  text-align: justify;
   font-size: larger;
 }
 
