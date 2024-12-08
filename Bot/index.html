@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Math Bot</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand mx-auto" href="#">Math Bot</a>
+  </div>
+</nav>
+
+<div class="container mt-4">
+  <h1 class="text-center">Math Bot</h1>
+  
+  <div class="mb-3">
+    <label for="mathProblem" class="form-label">Enter your math problem:</label>
+    <div class="input-group">
+      <input type="text" class="form-control" id="mathProblem" placeholder="e.g., 2+2">
+      <button class="btn btn-primary" type="button" id="solveButton">Solve</button>
+    </div>
+  </div>
+  
+  <div class="mb-3">
+    <label for="result" class="form-label">Result:</label>
+    <div id="result" class="p-3 border rounded bg-light">
+      <p id="resultText"></p>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="script.js"></script>
+</body>
+</html>
