@@ -68,3 +68,24 @@ h4{
 .accordion{
   padding-bottom: 50px;
 }
+
+.highlighted-text {
+  background-color: #f8f9fa; /* Light background color */
+ 
+  padding: 15px; /* Add padding for spacing */
+  font-size: 1.1rem; /* Slightly larger font for better readability */
+  color: #495057; /* Dark gray text for contrast */
+  font-style: italic; /* Italicized text to add a subtle emphasis */
+  border-radius: 5px; /* Rounded corners for a softer look */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  margin-top: 20px; /* Margin for spacing */
+  line-height: 1.6; /* Better line spacing for readability */
+  width: 83%; /* Set the width */
+  max-width: 100%; /* Ensure it doesn’t exceed the container width */
+  margin: 0 auto; /* Center the element horizontally */
+  margin-bottom: 15px; /* Spacing at the bottom */
+  box-sizing: border-box; /* Ensures padding is included in the width */
+  text-align: center; /* Center the text inside the element */
+}
+
+
