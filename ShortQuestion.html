@@ -461,7 +461,8 @@
       </div>
     </div>
   </div>
+  <script src="scripts/scripts.js"></script>  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> 
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> <script> document.querySelectorAll(".accordion-button").forEach((button) => { button.addEventListener("click", function () { const buttonTarget = this.getAttribute("data-bs-target"); const element = document.querySelector(buttonTarget); document.querySelectorAll('.accordion-collapse').forEach(collapse => { if (collapse !== element) { collapse.classList.remove('show'); } }); setTimeout(() => { element.classList.add('show'); const offsetTop = this.parentElement.offsetTop - 20; window.scrollTo({ top: offsetTop, behavior: "smooth" }); }, 300); }); }); </script>
 
 </html>
