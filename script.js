@@ -23,6 +23,11 @@ const GEMINI_API_KEY = 'AIzaSyA5n98OUCvdGpfpO8IFQyoY5TxZON860ew';  // Replace wi
 // Function to evaluate math expressions
 function evaluateMathExpression(expression, isDegree) {
     try {
+        // Normalize input: Convert `Sin`, `Cos`, `Tan`, etc., to lowercase `sin`, `cos`, `tan`
+        expression = expression.replace(/\b(Sin|Cos|Tan|Log|Sqrt|Abs|Pi|E|Pow)\b/gi, function(_, func) {
+            return func.toLowerCase();
+        });
+
         // Handling percentage expressions: "50% of 100" => "100 * (50 / 100)"
         expression = expression.replace(/(\d+)%\s*of\s*(\d+)/g, function(_, percentage, number) {
             return `${number} * (${percentage} / 100)`;
@@ -54,6 +59,8 @@ function evaluateMathExpression(expression, isDegree) {
         return { result: "Error: Invalid expression", steps: [] };
     }
 }
+
+
 
 // Function to fetch market data from Gemini (example BTC/USD)
 async function fetchGeminiMarketData() {

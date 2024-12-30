@@ -41,7 +41,7 @@ h1, h2 {
 label {
     font-size: 1rem;
     margin-bottom: 5px;
-    color: #555;
+    color: #111010;
     display: block;
 }
 
@@ -108,6 +108,12 @@ body.dark-mode {
     color: #e0e0e0;
 }
 
+body.dark-mode label {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: #ffffff;
+    display: block;
+}
 body.dark-mode h1, 
 body.dark-mode h2 {
     color: #66d9ff;
@@ -159,5 +165,9 @@ body.dark-mode #quadraticSolutionText {
     }
 }
 #toggleMode{
-    width: 20%;
+    width: 200px;
+}
+
+.header1{
+    font-size: 50px;
 }
