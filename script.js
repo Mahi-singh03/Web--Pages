@@ -62,6 +62,9 @@ function evaluateMathExpression(expression, isDegree) {
 
 
 
+
+
+
 // Function to fetch market data from Gemini (example BTC/USD)
 async function fetchGeminiMarketData() {
     const url = 'https://api.gemini.com/v1/pubticker/btcusd'; // Example: BTC/USD market data
