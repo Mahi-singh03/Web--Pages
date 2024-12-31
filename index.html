@@ -18,7 +18,7 @@
 
     <div id="normalCalcForm">
         <label for="mathProblem">Enter your math problem:</label>
-        <input type="text" id="mathProblem" placeholder="e.g. 50% of 40 ">
+        <input type="text" id="mathProblem" placeholder="e.g. sin(45) + cos(90)">
         <br>
         <label>
             <input type="radio" id="degree" name="angleUnit" value="degree" checked> Degrees
@@ -36,11 +36,11 @@
     <div id="quadraticCalcForm" style="display: none;">
         <h2>Quadratic Equation Solver</h2>
         <label for="a">a:</label>
-        <input type="number" id="a" placeholder="Coefficient a">
+        <input type="number" id="a" placeholder="Coefficient of X²">
         <label for="b">b:</label>
-        <input type="number" id="b" placeholder="Coefficient b">
+        <input type="number" id="b" placeholder="Coefficient of X">
         <label for="c">c:</label>
-        <input type="number" id="c" placeholder="Coefficient c">
+        <input type="number" id="c" placeholder="Coefficient of constant term">
         <button id="solveQuadraticButton">Solve Quadratic</button>
         <button id="resetQuadraticButton">Reset</button>
         <p id="quadraticResultText"></p>
