@@ -1,0 +1,18 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "this is a full stack project demostrating all the learnings ogf code",
+  "main": "index.js",
+  "scripts": {
+    "test": "hi"
+  },
+  "keywords": [
+    "hi"
+  ],
+  "author": "Mahi singh",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2",
+    "mongodb": "^6.12.0"
+  }
+}
