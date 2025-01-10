@@ -8,4 +8,6 @@ const userSchema = new mongoose.Schema({
 });
 
 // Export the model
-module.exports = mongoose.model('User', userSchema, 'User');  // Use 'std' as the collection name
+DataModel = mongoose.model('User', userSchema, 'User');  // Use 'std' as the collection name
+
+module.exports = DataModel;  // Export the model for use in other files
