@@ -1,62 +1,71 @@
 const express = require('express');
-const User = require('./Components/Users');  // Correct import for the User model
-const connect = require('./Components/connection');  // Ensure this path is correct
-const {validations, validationResult} = require('./Components/validations')
-const cors = require('cors')
+const { DataModel } = require('./Components/Users');
+const connect = require('./Components/connection');
+const { validationResult, validations_1, validations_2 } = require('./Components/validations');
+const cors = require('cors');
+const bcrypt = require('bcrypt');
 
 const app = express();
-app.use(cors())
-app.use(express.json())
+app.use(cors());
+app.use(express.json());
 
-// async function startServer() {
-//     try {
-//         await connect();  // Ensure the connection is established
-
-//         // Fetch data from the collection
-//         const data = await User.find();
-//         console.log('Fetched data:', data);  // Display fetched data
-
-//     } catch (error) {
-//         console.error('Server failed to start:', error.message);
-//         process.exit(1);
-//     }
-// }
-
-// Call the function to start the server
-// startServer();
-
-
-//POST API
-app.post("/SignUp", validations, async (req, res) => {
-    const errors = validationResult(req);
+// Connect to the database once
+(async () => {
+  try {
     await connect();
-    console.warn("database is connected")
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+    console.log("Database connected successfully");
+  } catch (error) {
+    console.error("Database connection failed:", error.message);
+    process.exit(1);
+  }
+})();
+
+// Sign Up API
+app.post("/SignUp", validations_1, async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
+  const { email, password } = req.body;
+  try {
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const data = new DataModel({ email, password: hashedPassword });
+    await data.save();
+    res.status(201).json({ message: "User registered successfully" });
+  } catch (err) {
+    console.error("Error saving data:", err);
+    res.status(500).json({ error: "Error saving data", details: err.message });
+  }
+});
+
+app.post("/login", validations_2, async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    console.log('Validation errors:', errors.array());
+    return res.status(400).json({ errors: errors.array() });
+  }
+
+  const { email, password } = req.body;
+  try {
+    const user = await DataModel.findOne({ email: new RegExp(`^${email}$`, 'i') });
+    if (!user) {
+      return res.status(401).json({ message: "Invalid email " });
     }
-  
-    const data = new DataModel(req.body);
-    try {
-      await data.save();
-      console.warn("Data is saved");
-      res.status(201).send("Data saved successfully");
-    } catch (err) {
-      console.error("Error saving data:", err);
-      res.status(500).send("Error saving data");
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(401).json({ message: "Invalid password" });
     }
-  });
-  
-  
 
-
-
-
-
-
-
-
-
+    const token = user.generateToken();
+    res.json({ token });
+  } catch (error) {
+    console.error("Error logging in:", error);
+    res.status(500).json({ error: "Error logging in", details: error.message });
+  }
+});
 
 app.listen(5000, () => {
-    console.log('Server started on port 5000');
+  console.log('Server started on port 5000');
 });

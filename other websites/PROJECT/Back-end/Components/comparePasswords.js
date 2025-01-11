@@ -21,6 +21,11 @@ userSchema.methods.generateToken = function () {
   return token;
 };
 
-const DataModel = mongoose.models.User || mongoose.model('User', userSchema);
+let DataModel;
+try {
+  DataModel = mongoose.model('User');
+} catch (error) {
+  DataModel = mongoose.model('User', userSchema);
+}
 
 module.exports = { DataModel };

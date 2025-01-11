@@ -31,7 +31,7 @@ const SignUp = () => {
       });
 
       if (response.ok) {
-        const result = await response.text();
+        const result = await response.json();
         console.log('Server response:', result);
         localStorage.setItem('user', JSON.stringify({ name, email }));
         navigate('/', { replace: true });

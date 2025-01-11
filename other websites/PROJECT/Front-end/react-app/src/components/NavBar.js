@@ -6,13 +6,12 @@ const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation();
-
   const navigate = useNavigate();
 
   useEffect(() => {
     const user = localStorage.getItem('user');
     setIsLoggedIn(user !== null);
-  }, []);
+  }, [location.pathname]); // Update the dependency array to include location.pathname
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -42,7 +41,10 @@ const NavBar = () => {
           <Link className="nav-link" to="/Specials">Specials</Link>
           <Link className="nav-link" to="/Orders">Orders</Link>
           {isLoggedIn ? (
-            <Link className="nav-link" to="/" onClick={handleLogout}>Log out</Link>
+            <>
+              <Link className="nav-link" to="/Profile">Profile</Link>
+              <Link className="nav-link" to="/" onClick={handleLogout}>Log out</Link>
+            </>
           ) : (
             <>
               {!isLoginPage && <Link className="nav-link" to="/Login">Login</Link>}

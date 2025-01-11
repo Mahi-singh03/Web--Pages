@@ -30,24 +30,7 @@ const Login = () => {
         body: JSON.stringify({ email, password })
       });
 
-      const textResponse = await response.text();
-      console.log("Response status:", response.status);
-      console.log("Response text:", textResponse);
-
-      let data;
-      try {
-        data = JSON.parse(textResponse); // Attempt to parse text as JSON
-      } catch {
-        if (response.ok && textResponse.toLowerCase().includes("login successful")) {
-          console.log("Success:", textResponse);
-          localStorage.setItem('user', JSON.stringify({ email })); // Store user data in local storage
-          navigate('/', { replace: true }); // Redirect to home on success
-          return;
-        } else {
-          setError("Unexpected server response: " + textResponse);
-          return;
-        }
-      }
+      const data = await response.json();
 
       if (response.ok) {
         console.log("Success:", data);
