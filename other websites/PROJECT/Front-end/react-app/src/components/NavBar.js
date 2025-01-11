@@ -11,7 +11,7 @@ const NavBar = () => {
   useEffect(() => {
     const user = localStorage.getItem('user');
     setIsLoggedIn(user !== null);
-  }, [location.pathname]); // Update the dependency array to include location.pathname
+  }, [location.pathname]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -23,9 +23,6 @@ const NavBar = () => {
     navigate('/');
   };
 
-  const isSignUpPage = location.pathname === '/SignUp';
-  const isLoginPage = location.pathname === '/Login';
-
   return (
     <nav className="nav-bar">
       <div className="nav-container">
@@ -36,19 +33,23 @@ const NavBar = () => {
           ☰
         </div>
         <div className={`nav-links ${isMenuOpen ? 'show' : ''}`}>
-          <Link className="nav-link" to="/">Home</Link>
-          <Link className="nav-link" to="/Menu">Menu</Link>
-          <Link className="nav-link" to="/Specials">Specials</Link>
-          <Link className="nav-link" to="/Orders">Orders</Link>
           {isLoggedIn ? (
             <>
+              <Link className="nav-link" to="/">Home</Link>
+              <Link className="nav-link" to="/Menu">Menu</Link>
+              <Link className="nav-link" to="/Specials">Specials</Link>
+              <Link className="nav-link" to="/Orders">Orders</Link>
               <Link className="nav-link" to="/Profile">Profile</Link>
               <Link className="nav-link" to="/" onClick={handleLogout}>Log out</Link>
             </>
           ) : (
             <>
-              {!isLoginPage && <Link className="nav-link" to="/Login">Login</Link>}
-              {!isSignUpPage && <Link className="nav-link" to="/SignUp">Sign Up</Link>}
+              {location.pathname !== '/Login' && (
+                <Link className="nav-link" to="/Login">Login</Link>
+              )}
+              {location.pathname !== '/SignUp' && (
+                <Link className="nav-link" to="/SignUp">Sign Up</Link>
+              )}
             </>
           )}
         </div>

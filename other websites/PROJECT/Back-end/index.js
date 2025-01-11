@@ -27,10 +27,10 @@ app.post("/SignUp", validations_1, async (req, res) => {
     return res.status(400).json({ errors: errors.array() });
   }
 
-  const { email, password } = req.body;
+  const { name, email, password } = req.body;
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
-    const data = new DataModel({ email, password: hashedPassword });
+    const data = new DataModel({ name, email, password: hashedPassword });
     await data.save();
     res.status(201).json({ message: "User registered successfully" });
   } catch (err) {

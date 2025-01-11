@@ -52,7 +52,7 @@ input:focus {
   position: absolute;
   right: 10px;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-40%);
   background: #ffffff;
   color: #000;
   border: none;
