@@ -48,18 +48,18 @@ input:focus {
   position: relative;
 }
 
-.toggle-password-1 {
+.toggle-password {
   position: absolute;
   right: 10px;
   top: 50%;
-  transform: translateY(-70%);
+  transform: translateY(-50%);
   background: #ffffff;
   color: #000;
   border: none;
   border-radius: 3px;
   cursor: pointer;
   height: 30px;
-  width: 60px;
+  width: 70px;
 }
 
 .toggle-password:focus {
@@ -79,4 +79,25 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
   background: #0056b3;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+form p {
+  text-align: center;
+  font-size: 14px;
+}
+
+form p a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+form p a:hover {
+  text-decoration: underline;
 }

@@ -5,6 +5,7 @@ import NavBar from './components/NavBar.js';  // Correct import
 import Footer from './components/Footer.js';  // Correct import
 import SignUp from './components/SignUp.js';  // Correct import
 import Private_component from './components/privateRotes.js';
+import Login from './components/LogIn.js';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           
           
           <Route path='/SignUp' element={<SignUp />} />
+          <Route path='/Login' element={<Login />} />
 
 
         </Routes>

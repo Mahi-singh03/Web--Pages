@@ -27,7 +27,7 @@ app.use(express.json())
 
 
 //POST API
-app.post("/", validations, async (req, res) => {
+app.post("/SignUp", validations, async (req, res) => {
     const errors = validationResult(req);
     await connect();
     console.warn("database is connected")
