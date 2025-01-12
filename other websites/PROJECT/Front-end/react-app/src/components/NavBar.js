@@ -42,7 +42,7 @@ const NavBar = () => {
               <Link className="nav-link" to="/Specials">Specials</Link>
               <Link className="nav-link" to="/Orders">Orders</Link>
               <Link className="nav-link" to="/Profile">Profile</Link>
-              <Link className="nav-link" to="/" onClick={handleLogout}>Log out</Link>
+              <Link className="nav-link" to="/Logout" onClick={handleLogout}>Log out</Link>
             </>
           ) : (
             <>
