@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import '../css/NavBar.css';
-import logo from '../Images/logo.png';  // Adjusted path assuming Images folder is outside component folder
+import logo from '../Images/logo.png';
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,18 +10,30 @@ const NavBar = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const user = localStorage.getItem('user');
-    setIsLoggedIn(user !== null);
+    const updateLoginStatus = () => {
+      const user = localStorage.getItem('user');
+      setIsLoggedIn(user !== null);
+    };
+
+    // Initial check
+    updateLoginStatus();
+
+    // Listen for changes in localStorage
+    window.addEventListener('storage', updateLoginStatus);
+
+    // Cleanup listener on component unmount
+    return () => {
+      window.removeEventListener('storage', updateLoginStatus);
+    };
   }, [location.pathname]);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   const handleLogout = () => {
     localStorage.removeItem('user');
     setIsLoggedIn(false);
     navigate('/');
+    window.dispatchEvent(new Event('storage')); // Notify other components
   };
 
   return (
@@ -42,7 +54,7 @@ const NavBar = () => {
               <Link className="nav-link" to="/Specials">Specials</Link>
               <Link className="nav-link" to="/Orders">Orders</Link>
               <Link className="nav-link" to="/Profile">Profile</Link>
-              <Link className="nav-link" to="/Logout" onClick={handleLogout}>Log out</Link>
+              <Link className="nav-link" to="/" onClick={handleLogout}>Log out</Link>
             </>
           ) : (
             <>
