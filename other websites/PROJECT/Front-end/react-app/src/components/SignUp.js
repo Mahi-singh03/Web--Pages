@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 import '../css/SignUp.css';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
   const [name, setName] = useState('');
@@ -8,46 +8,45 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (localStorage.getItem('user')) {
-      navigate('/');
+    const check = localStorage.getItem('user');
+    if (check) {
+      navigate('/'); // Redirect to home if the user is already logged in
     }
   }, [navigate]);
 
   const handleSignUp = async (event) => {
     event.preventDefault();
-    setError(null);
+    setError(null); // Reset error state before submission
+    setLoading(true); // Set loading state to true
 
     try {
       const response = await fetch('http://localhost:5000/SignUp', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ name, email, password }),
+        body: JSON.stringify({ name, email, password })
       });
 
+      const data = await response.json();
+
       if (response.ok) {
-        const result = await response.json();
-        console.log('Server response:', result);
-        
-        const userData = { 
-          name, 
-          email, 
-          
-        };
-        localStorage.setItem('user', JSON.stringify(userData));
-        navigate('/', { replace: true });
+        console.log("Success:", data);
+        localStorage.setItem('user', JSON.stringify(data)); // Store user data in local storage
+        navigate('/', { replace: true }); // Redirect to home
       } else {
-        const errorResult = await response.json();
-        setError(errorResult.errors?.[0]?.msg || 'Failed to sign up. Please try again.');
+        setError(data.message || "Failed to sign up. Please check your credentials.");
       }
     } catch (error) {
-      console.error('Error:', error);
-      setError('An error occurred. Please try again.');
+      console.error("Error:", error);
+      setError("An error occurred. Please try again.");
+    } finally {
+      setLoading(false); // Set loading state to false
     }
   };
 
@@ -56,46 +55,59 @@ const SignUp = () => {
       <form onSubmit={handleSignUp}>
         <h1>Sign Up</h1>
         <div className="inset">
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-
-          <label htmlFor="email">Email Address</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-
-          <label htmlFor="password">Password</label>
-          <div className="password-container">
-            <input
-              type={showPassword ? 'text' : 'password'}
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+          <p>
+            <label htmlFor="name">NAME</label>
+            <input 
+              type="text" 
+              name="name" 
+              value={name} 
+              onChange={(e) => setName(e.target.value)} 
+              id="name" 
               required
             />
-            <button
-              type="button"
-              className="toggle-password-1"
-              onClick={() => setShowPassword(!showPassword)}
-            >
-              {showPassword ? 'Hide' : 'Show'}
-            </button>
-          </div>
+          </p>
+          <p>
+            <label htmlFor="email">EMAIL ADDRESS</label>
+            <input 
+              type="email" 
+              name="email" 
+              value={email} 
+              onChange={(e) => setEmail(e.target.value)} 
+              id="email" 
+              required
+            />
+          </p>
+          <p className="password-container">
+            <label htmlFor="password">PASSWORD</label>
+            <div className="password-input-wrapper">
+              <input 
+                type={showPassword ? "text" : "password"} 
+                name="password" 
+                value={password} 
+                onChange={(e) => setPassword(e.target.value)} 
+                id="password" 
+                required
+              />
+              <button 
+                type="button" 
+                className="toggle-password" 
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? "Hide" : "Show"}
+              </button>
+            </div>
+          </p>
         </div>
         {error && <div className="error-message">{error}</div>}
-        <button type="submit">Sign Up</button>
-        <p>
-          Already have an account? <Link to="/Login">Log In</Link>
+        {loading ? (
+          <div className="loading-message">Loading...</div>
+        ) : (
+          <div className="forgot-password">
+            <span>Already have an account? <a href="/Login">Log In</a></span>
+          </div>
+        )}
+        <p className="p-container">
+          <button type="submit" id="go" disabled={loading}>Sign Up</button>
         </p>
       </form>
     </div>

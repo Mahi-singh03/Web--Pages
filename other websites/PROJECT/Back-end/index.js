@@ -20,56 +20,26 @@ app.use(express.json());
   }
 })();
 
-// UsI 
-// Get me Username API
-app.get("/get-username", async (req, res) => {
-  try {
-    const token = req.headers.authorization;
-    if (!token) {
-      return res.status(401).json({ message: "Unauthorized" });
-    }
-
-    const user = await DataModel.findOne({ token: token });
-    if (!user) {
-      return res.status(401).json({ message: "Invalid token" });
-    }
-
-    res.json({ username: user.name });
-    
-  } catch (error) {
-    console.error("Error getting username:", error);
-    res.status(500).json({ error: "Error getting username", details: error.message });
-  }
-});
-
-
-// Sign Up API
-app.post("/login", validations_2, async (req, res) => {
+app.post("/SignUp", validations_1, async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    console.log('Validation errors:', errors.array());
     return res.status(400).json({ errors: errors.array() });
   }
 
-  const { email, password } = req.body;
+  const { name, email, password } = req.body;
   try {
-    const user = await DataModel.findOne({ email: new RegExp(`^${email}$`, 'i') });
-    if (!user) {
-      return res.status(401).json({ message: "Invalid email " });
-    }
-
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      return res.status(401).json({ message: "Invalid password" });
-    }
-
-    const token = user.generateToken();
-    res.json({ token, username: user.name });
-  } catch (error) {
-    console.error("Error logging in:", error);
-    res.status(500).json({ error: "Error logging in", details: error.message });
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const data = new DataModel({ name, email, password: hashedPassword });
+    await data.save();
+    const token = data.generateToken();
+    res.status(201).json({ token, username: data.name });
+  } catch (err) {
+    console.error("Error saving data:", err);
+    res.status(500).json({ error: "Error saving data", details: err.message });
   }
 });
+
+
 
 app.post("/login", validations_2, async (req, res) => {
   const errors = validationResult(req);
