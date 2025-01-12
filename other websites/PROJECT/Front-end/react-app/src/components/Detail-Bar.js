@@ -3,7 +3,7 @@ import '../css/DetailBar.css';
 
 const DetailBar = () => {
   const user = JSON.parse(localStorage.getItem('user')); // Parse 'user' from localStorage
-  const userName = user?.name || 'Guest'; // Safely access the 'name' property
+  const userName = user?.username || 'Guest'; // Safely access the 'username' property
 
   const whatsappNumber = '1234567890'; // Replace with your actual WhatsApp number
 

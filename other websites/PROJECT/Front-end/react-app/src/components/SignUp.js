@@ -33,8 +33,12 @@ const SignUp = () => {
       if (response.ok) {
         const result = await response.json();
         console.log('Server response:', result);
-        const { token } = result; // Assuming the response includes a token
-        const userData = { name, email, token };
+        
+        const userData = { 
+          name, 
+          email, 
+          
+        };
         localStorage.setItem('user', JSON.stringify(userData));
         navigate('/', { replace: true });
       } else {

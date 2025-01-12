@@ -5,8 +5,9 @@ import { useNavigate } from 'react-router-dom';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -17,9 +18,10 @@ const Login = () => {
     }
   }, [navigate]);
 
-  const loginData = async (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
     setError(null); // Reset error state before submission
+    setLoading(true); // Set loading state to true
 
     try {
       const response = await fetch('http://localhost:5000/login', {
@@ -42,12 +44,14 @@ const Login = () => {
     } catch (error) {
       console.error("Error:", error);
       setError("An error occurred. Please try again.");
+    } finally {
+      setLoading(false); // Set loading state to false
     }
   };
 
   return (
     <div className="login-form-container">
-      <form onSubmit={loginData}>
+      <form onSubmit={handleLogin}>
         <h1>Log In</h1>
         <div className="inset">
           <p>
@@ -83,11 +87,15 @@ const Login = () => {
           </p>
         </div>
         {error && <div className="error-message">{error}</div>}
-        <div className="forgot-password">
-          <span>Forgot password?</span>
-        </div>
+        {loading ? (
+          <div className="loading-message">Loading...</div>
+        ) : (
+          <div className="forgot-password">
+            <span>Forgot password?</span>
+          </div>
+        )}
         <p className="p-container">
-          <button type="submit" id="go">Log In</button>
+          <button type="submit" id="go" disabled={loading}>Log In</button>
         </p>
       </form>
     </div>
