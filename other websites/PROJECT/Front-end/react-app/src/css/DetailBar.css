@@ -1,0 +1,34 @@
+.detail-bar {
+    padding: 2px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  .greeting {
+    font-size: 18px;
+    font-weight: 600;
+    margin-right: 30px;
+    color: #000000;
+    font-style: italic;
+  }
+  
+  
+  .whatsapp a {
+    color: #25d366;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+  
+  .whatsapp a::before {
+    margin-right: 8px;
+  }
+  
+  .whatsapp a:hover {
+    color: #128c7e;
+  }
+  
