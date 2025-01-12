@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import '../css/NavBar.css';
+import logo from '../Images/logo.png';  // Adjusted path assuming Images folder is outside component folder
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,6 +28,7 @@ const NavBar = () => {
     <nav className="nav-bar">
       <div className="nav-container">
         <Link className="nav-brand" to="/">
+          <img src={logo} alt="Restaurant Logo" className="nav-logo" />
           Restaurants
         </Link>
         <div className="hamburger-menu" onClick={toggleMenu}>

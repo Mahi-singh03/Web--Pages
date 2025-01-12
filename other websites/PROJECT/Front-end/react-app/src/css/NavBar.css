@@ -86,3 +86,19 @@
     cursor: pointer;
   }
 }
+.nav-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 5px 0;
+}
+
+.nav-logo {
+  height: 20px;  /* Adjust the size to fit your design */
+  width: auto;   /* Maintain the aspect ratio of the logo */
+  margin-right: 10px;  /* Space between logo and brand text */
+  border-radius: 8px;  /* Optional: rounded corners for the logo */
+}
