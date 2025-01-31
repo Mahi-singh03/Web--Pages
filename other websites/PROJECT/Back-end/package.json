@@ -1,15 +1,16 @@
 {
   "name": "project",
   "version": "1.0.0",
-  "description": "this is a full stack project demostrating all the learnings ogf code",
+  "description": "this is a full stack project demonstrating all the learnings of code",
   "main": "index.js",
   "scripts": {
-    "test": "hi"
+    "test": "hi",
+    "start": "node index.js"
   },
   "keywords": [
     "hi"
   ],
-  "author": "Mahi singh",
+  "author": "Mahi Singh",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
